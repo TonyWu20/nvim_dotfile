@@ -12,6 +12,8 @@
  Plug 'junegunn/goyo.vim'
  Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
  Plug 'tpope/vim-fugitive'
+ Plug 'mhinz/vim-signify'
+ Plug 'tpope/vim-repeat'
  Plug 'tpope/vim-surround'
  Plug 'tmhedberg/SimpylFold'
  Plug 'ap/vim-css-color'
