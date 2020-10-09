@@ -39,7 +39,6 @@
  Plug 'vim-airline/vim-airline'
  Plug 'vim-airline/vim-airline-themes'
  Plug 'jiangmiao/auto-pairs'
- Plug 'bfredl/nvim-ipy'
  Plug 'gabrielelana/vim-markdown'
  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
  Plug 'luochen1990/rainbow'
