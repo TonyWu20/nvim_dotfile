@@ -27,12 +27,12 @@ colorscheme deus
  "au Filetype tex set background=dark
  au Filetype tex let g:airline_theme='deus'
  au Filetype tex :NoMatchParen
- autocmd filetype python noremap <buffer> <f10> :ALEFix<cr>
  autocmd filetype python noremap <f12> :Vista finder<cr>
  autocmd filetype python inoremap <f10> <Esc> :ALEFix<cr>
  autocmd filetype tex noremap <buffer> <f10> :VimtexCompile<cr>
  autocmd filetype markdown noremap <buffer> <f10> <Esc> :MarkdownPreview <cr>
  autocmd filetype markdown inoremap <f10> <Esc>:MarkdownPreview <cr>
+ autocmd filetype markdown inoremap <F5> <Esc> :ALEFix<cr>
  let python_highlight_all = 1
 
  let g:rainbow_active = 1
@@ -55,10 +55,10 @@ colorscheme deus
      \ }
  let g:ale_linters = {
      \ 'markdown':['mdl'],
-     \ 'python':['mypy', 'pylint'],
+     \ 'python':['pylint','mypy'],
      \ 'tex': ['proselint']
      \ }
- let g:ale_fix_on_save = 1
+ let g:ale_fix_on_save = 0
 
 
  nnoremap <F2> :Defx<CR>
