@@ -1,4 +1,12 @@
-colorscheme deus
+function! MyHighlights() abort
+    highlight SpellBad     cterm=undercurl ctermbg=76  ctermfg=16  gui=UnderCurl guifg=#fb9a99
+    highlight SpellRare cterm=underline ctermbg=231 ctermfg=160 gui=underline guifg=#f89000
+endfunction
+augroup MyColors
+	autocmd!
+	autocmd ColorScheme * call MyHighlights()
+augroup END
+colorscheme gruvbox
  au Filetype python set tabstop=4
  au Filetype python set softtabstop=4
  au Filetype python set shiftwidth=4
@@ -10,26 +18,21 @@ colorscheme deus
  autocmd Filetype python set foldlevel=99
  au Filetype markdown set tabstop=4
  au Filetype markdown set softtabstop=4
- au Filetype markdown set textwidth=87
+ au Filetype markdown set textwidth=78
  au Filetype markdown set shiftwidth=4
  au Filetype markdown set expandtab
  au Filetype markdown set autoindent
- au Filetype markdown colorscheme deus
- au Filetype markdown let g:airline_theme='deus'
- au Filetype markdown let g:github_colors_soft=1
  au Filetype tex set textwidth=78
  au Filetype tex set nocursorline
  au Filetype tex set conceallevel=0
  au Filetype tex set formatoptions+=a
  au Filetype tex set nornu
  au Filetype tex set spell
- au Filetype tex colorscheme deus
- "au Filetype tex set background=dark
- au Filetype tex let g:airline_theme='deus'
  au Filetype tex :NoMatchParen
  autocmd filetype python noremap <f12> :Vista finder<cr>
  autocmd filetype python inoremap <f10> <Esc> :ALEFix<cr>
  autocmd filetype tex noremap <buffer> <f10> :VimtexCompile<cr>
+ autocmd filetype tex noremap <buffer> <f5> :ALEFix<cr>
  autocmd filetype markdown noremap <buffer> <f10> <Esc> :MarkdownPreview <cr>
  autocmd filetype markdown inoremap <f10> <Esc>:MarkdownPreview <cr>
  autocmd filetype markdown inoremap <F5> <Esc> :ALEFix<cr>
@@ -51,7 +54,8 @@ colorscheme deus
 
  let g:ale_fixers = {
      \ 'python':['yapf'],
-     \ 'markdown':['prettier']
+     \ 'markdown':['prettier'],
+     \ 'tex': ['textlint']
      \ }
  let g:ale_linters = {
      \ 'markdown':['mdl'],
@@ -151,8 +155,6 @@ colorscheme deus
  let g:vimtex_compiler_callback_hooks = ['UpdateSkim']
  let g:tex_concealcursor = ""
  let conceallevel=0
- let g:tex_conceal_frac=1
- let g:tex_conceal = 'adgms'
  function! UpdateSkim(status)
      if !a:status | return | endif
  

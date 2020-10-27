@@ -1,13 +1,8 @@
  call plug#begin()
- Plug 'flazz/vim-colorschemes'
  Plug 'morhetz/gruvbox'
- Plug 'rakr/vim-one'
- Plug 'joshdick/onedark.vim'
  Plug 'liuchengxu/vista.vim'
  Plug 'vim-scripts/indentpython.vim'
  Plug 'lervag/vimtex', {'for': 'tex'}
- Plug 'alexanderjeurissen/lumiere.vim'
- Plug 'owickstrom/vim-colors-paramount'
  Plug 'chaoren/vim-wordmotion'
  Plug 'junegunn/goyo.vim'
  Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
@@ -18,6 +13,7 @@
  Plug 'tmhedberg/SimpylFold'
  Plug 'ap/vim-css-color'
  Plug 'reedes/vim-pencil'
+ Plug 'reedes/vim-wordy'
  Plug 'ajmwagar/vim-deus'
  Plug 'dbmrq/vim-ditto'
  Plug 'chrisbra/csv.vim'
@@ -49,7 +45,6 @@
  Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
  Plug 'godlygeek/tabular'
  Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'} " for VimPlug
- Plug 'drewtempelmeyer/palenight.vim'
  Plug 'ncm2/float-preview.nvim'
  Plug 'dag/vim-fish'
  call plug#end()

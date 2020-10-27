@@ -1,4 +1,4 @@
-set shell=bash
+set shell=fish
 source $HOME/.config/nvim/general.vim
 source $HOME/.config/nvim/keys.vim
 source $HOME/.config/nvim/plugged.vim
