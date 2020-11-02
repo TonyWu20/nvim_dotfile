@@ -29,10 +29,11 @@ colorscheme gruvbox
  au Filetype tex set nornu
  au Filetype tex set spell
  au Filetype tex :NoMatchParen
- autocmd filetype python noremap <f12> :Vista finder<cr>
+ autocmd filetype python noremap <f12> :Clap tags<cr>
  autocmd filetype python inoremap <f10> <Esc> :ALEFix<cr>
  autocmd filetype tex noremap <buffer> <f10> :VimtexCompile<cr>
  autocmd filetype tex noremap <buffer> <f5> :ALEFix<cr>
+ autocmd filetype tex nnoremap <buffer> <F12> :Vista!!<cr>
  autocmd filetype markdown noremap <buffer> <f10> <Esc> :MarkdownPreview <cr>
  autocmd filetype markdown inoremap <f10> <Esc>:MarkdownPreview <cr>
  autocmd filetype markdown inoremap <F5> <Esc> :ALEFix<cr>
@@ -105,9 +106,17 @@ colorscheme gruvbox
  let g:defx_icons_nested_closed_tree_icon = ''
  let g:elite_mode=1
 
+ let g:clap_layout = { 'relative': 'editor' }
+ let g:clap_theme = 'material_design_dark'
+ let g:clap_provider_quick_open = {
+    \ 'source': ['~/.config/nvim/init.vim', '~/.config/nvim/ftcustom.vim', '~/.config/nvim/plugged.vim', '~/.config/alacritty/alacritty.yml', '~/.config/fish/config.fish'],
+    \ 'sink': 'e',
+    \ }
  nmap <f12> :Vista finder<cr>
+ let g:vista#renderer#enable_icon = 1
  let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
  let g:vista_default_executive = 'ctags'
+ let g:vista_executive_for = {'tex': 'coc', 'python': 'coc'}
  let g:vista_fzf_preview=['right:50%']
  let g:fzf_layout = { 'window': 'call OpenFloatingWin()' }
  function! OpenFloatingWin()
@@ -219,7 +228,7 @@ colorscheme gruvbox
  let b:csv_arrange_align = 'l*'
 
 
- let g:coc_global_extensions = ['coc-python', 'coc-snippets', 'coc-markdownlint', 'coc-highlight', 'coc-vimtex']
+ let g:coc_global_extensions = ['coc-python', 'coc-snippets', 'coc-markdownlint', 'coc-highlight', 'coc-vimtex', 'coc-texlab']
 
  inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :

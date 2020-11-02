@@ -31,6 +31,7 @@
  Plug 'majutsushi/tagbar' 
  Plug 'Yggdroot/indentLine'
  Plug 'kristijanhusak/defx-icons'
+ Plug 'ryanoasis/vim-devicons'
  Plug 'scrooloose/nerdcommenter'
  Plug 'vim-airline/vim-airline'
  Plug 'vim-airline/vim-airline-themes'
