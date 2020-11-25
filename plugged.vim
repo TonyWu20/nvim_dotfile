@@ -1,5 +1,6 @@
  call plug#begin()
  Plug 'morhetz/gruvbox'
+ Plug 'lifepillar/vim-gruvbox8'
  Plug 'liuchengxu/vista.vim'
  Plug 'vim-scripts/indentpython.vim'
  Plug 'lervag/vimtex', {'for': 'tex'}

@@ -1,12 +1,13 @@
 function! MyHighlights() abort
     highlight SpellBad     cterm=undercurl ctermbg=76  ctermfg=16  gui=UnderCurl guifg=#fb9a99
     highlight SpellRare cterm=underline ctermbg=231 ctermfg=160 gui=underline guifg=#f89000
+    highlight Italic cterm=italic ctermfg=11 gui=italic guifg=#ffff00
 endfunction
 augroup MyColors
 	autocmd!
 	autocmd ColorScheme * call MyHighlights()
 augroup END
-colorscheme gruvbox
+colorscheme gruvbox8_soft
  au Filetype python set tabstop=4
  au Filetype python set softtabstop=4
  au Filetype python set shiftwidth=4
@@ -61,7 +62,7 @@ colorscheme gruvbox
  let g:ale_linters = {
      \ 'markdown':['mdl'],
      \ 'python':['pylint','mypy'],
-     \ 'tex': ['proselint']
+     "\ 'tex': ['proselint']
      \ }
  let g:ale_fix_on_save = 0
 
@@ -228,7 +229,7 @@ colorscheme gruvbox
  let b:csv_arrange_align = 'l*'
 
 
- let g:coc_global_extensions = ['coc-python', 'coc-snippets', 'coc-markdownlint', 'coc-highlight', 'coc-vimtex', 'coc-texlab']
+ let g:coc_global_extensions = ['coc-python', 'coc-snippets', 'coc-markdownlint', 'coc-highlight', 'coc-vimtex']
 
  inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
