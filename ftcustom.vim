@@ -1,7 +1,7 @@
 function! MyHighlights() abort
     highlight SpellBad     cterm=undercurl ctermbg=76  ctermfg=16  gui=UnderCurl guifg=#fb9a99
     highlight SpellRare cterm=underline ctermbg=231 ctermfg=160 gui=underline guifg=#f89000
-    highlight Italic cterm=italic ctermfg=11 gui=italic guifg=#ffff00
+    highlight texItalStyle  cterm=italic ctermfg=11 gui=italic guifg=#ffff00
 endfunction
 augroup MyColors
 	autocmd!
@@ -62,9 +62,9 @@ colorscheme gruvbox8_soft
  let g:ale_linters = {
      \ 'markdown':['mdl'],
      \ 'python':['pylint','mypy'],
-     "\ 'tex': ['proselint']
+     \ 'tex': ['proselint']
      \ }
- let g:ale_fix_on_save = 0
+ let g:ale_fix_on_save = 1
 
 
  nnoremap <F2> :Defx<CR>
@@ -162,7 +162,7 @@ colorscheme gruvbox8_soft
 
  let g:vimtex_view_method = "skim"
  let g:vimtex_view_general_options = '-r @line @pdf @tex'
- let g:vimtex_compiler_callback_hooks = ['UpdateSkim']
+ let VimtexEventCompileSuccess = ['UpdateSkim']
  let g:tex_concealcursor = ""
  let conceallevel=0
  function! UpdateSkim(status)
@@ -196,9 +196,6 @@ colorscheme gruvbox8_soft
      \ ],
      \}
  let g:vimtex_complete_recursive_bib = 1
- let g:vimtex_complete_bib = {'simple':1,
-			 \ 'abbr_fmt':'@author_short'
-			 \}
  let g:pencil#wrapModeDefault = 'soft'
  augroup pencil
  	autocmd!
@@ -229,7 +226,7 @@ colorscheme gruvbox8_soft
  let b:csv_arrange_align = 'l*'
 
 
- let g:coc_global_extensions = ['coc-python', 'coc-snippets', 'coc-markdownlint', 'coc-highlight', 'coc-vimtex']
+ let g:coc_global_extensions = ['coc-python', 'coc-snippets', 'coc-markdownlint', 'coc-highlight', 'coc-vimtex', 'coc-texlab']
 
  inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
