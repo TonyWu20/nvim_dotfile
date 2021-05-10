@@ -8,6 +8,8 @@ augroup MyColors
 	autocmd ColorScheme * call MyHighlights()
 augroup END
 colorscheme gruvbox8_soft
+ au Filetype yaml set tabstop=4
+ au Filetype yaml set softtabstop=4
  au Filetype python set tabstop=4
  au Filetype python set softtabstop=4
  au Filetype python set shiftwidth=4
@@ -57,7 +59,8 @@ colorscheme gruvbox8_soft
  let g:ale_fixers = {
      \ 'python':['yapf'],
      \ 'markdown':['prettier'],
-     \ 'tex': ['textlint']
+     \ 'tex': ['textlint'],
+     \ 'perl': ['perltidy']
      \ }
  let g:ale_linters = {
      \ 'markdown':['mdl'],
@@ -70,7 +73,7 @@ colorscheme gruvbox8_soft
  nnoremap <F2> :Defx<CR>
  call defx#custom#option('_', {
        \ 'columns': 'indent:git:icons:filename',
-       \ 'winwidth': 30,
+       \ 'winwidth': 50,
        \ 'split': 'vertical',
        \ 'direction': 'topleft',
        \ 'show_ignored_files': 0,
@@ -113,12 +116,12 @@ colorscheme gruvbox8_soft
     \ 'source': ['~/.config/nvim/init.vim', '~/.config/nvim/ftcustom.vim', '~/.config/nvim/plugged.vim', '~/.config/alacritty/alacritty.yml', '~/.config/fish/config.fish'],
     \ 'sink': 'e',
     \ }
- nmap <f12> :Vista finder<cr>
+ nmap <f12> :Clap tags<cr>
  let g:vista#renderer#enable_icon = 1
  let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
- let g:vista_default_executive = 'ctags'
+ let g:vista_default_executive = 'coc'
  let g:vista_executive_for = {'tex': 'coc', 'python': 'coc'}
- let g:vista_fzf_preview=['right:50%']
+ let g:vista_fzf_preview=['right:80%']
  let g:fzf_layout = { 'window': 'call OpenFloatingWin()' }
  function! OpenFloatingWin()
  	let height = &lines - 3
@@ -154,8 +157,7 @@ colorscheme gruvbox8_soft
  let g:vim_markdown_toc_autofit = 1
  let g:vim_markdown_math = 1
  let g:mkdp_auto_close = 0
-
- "let g:mkdp_browser = 'Google Chrome'
+ let g:mkdp_browser = 'Google Chrome'
 
  let g:tagbar_sort = 0
  let g:tagbar_width = 30
@@ -188,6 +190,7 @@ colorscheme gruvbox8_soft
  let g:vimtex_quickfix_mode = 2
  let g:vimtex_compiler_progname='nvr'
  let g:vimtex_compiler_latexmk = {
+     \ 'executable': 'latexmk',
      \ 'options' : [
      \   '-xelatex',
      \   '-file-line-error',
@@ -226,7 +229,7 @@ colorscheme gruvbox8_soft
  let b:csv_arrange_align = 'l*'
 
 
- let g:coc_global_extensions = ['coc-python', 'coc-snippets', 'coc-markdownlint', 'coc-highlight', 'coc-vimtex', 'coc-texlab']
+ let g:coc_global_extensions = ['coc-jedi', 'coc-snippets', 'coc-markdownlint', 'coc-highlight', 'coc-vimtex', 'coc-texlab']
 
  inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -276,6 +279,7 @@ nmap <silent> <leader>ja <Plug>(IPy-RunAll)
 nmap <silent> <leader>jt <Plug>(IPy-Terminate)
 
 let g:goyo_height = "95%"
+let g:goyo_linenr = 1
 let g:UltiSnipsExpandTrigger="<localleader><tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"

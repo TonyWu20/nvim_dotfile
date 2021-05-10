@@ -1,4 +1,5 @@
  call plug#begin()
+ Plug 'cespare/vim-toml'
  Plug 'morhetz/gruvbox'
  Plug 'lifepillar/vim-gruvbox8'
  Plug 'liuchengxu/vista.vim'
@@ -49,4 +50,7 @@
  Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'} " for VimPlug
  Plug 'ncm2/float-preview.nvim'
  Plug 'dag/vim-fish'
+ Plug 'sansyrox/vim-python-virtualenv'
+ Plug 'pedrohdz/vim-yaml-folds'
+ Plug 'jalvesaq/zotcite'
  call plug#end()

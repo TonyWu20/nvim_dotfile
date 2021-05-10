@@ -7,7 +7,7 @@ set hidden
 syntax enable
 filetype on
 let g:python3_host_prog = "/opt/homebrew/bin/python3"
-let g:ruby_host_prog = "/opt/homebrew/lib/ruby/gems/2.7.0/bin/neovim-ruby-host"
+let g:ruby_host_prog = "/opt/homebrew/lib/ruby/gems/3.0.0/bin/neovim-ruby-host"
 let g:tagbar_ctags_bin = "/opt/homebrew/bin/ctags"
 "let g:loaded_ruby_provider = 0
 set incsearch

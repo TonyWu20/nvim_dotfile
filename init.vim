@@ -1,4 +1,4 @@
-set shell=zsh
+set shell=/bin/zsh
 source $HOME/.config/nvim/general.vim
 source $HOME/.config/nvim/keys.vim
 source $HOME/.config/nvim/plugged.vim
