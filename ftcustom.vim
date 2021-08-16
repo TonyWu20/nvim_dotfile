@@ -8,8 +8,7 @@ augroup MyColors
 	autocmd ColorScheme * call MyHighlights()
 augroup END
 colorscheme gruvbox8_soft
- au Filetype yaml set tabstop=4
- au Filetype yaml set softtabstop=4
+ au Filetype yaml setlocal ts=2 sts=2 sw=2 expandtab
  au Filetype python set tabstop=4
  au Filetype python set softtabstop=4
  au Filetype python set shiftwidth=4
@@ -60,14 +59,17 @@ colorscheme gruvbox8_soft
      \ 'python':['yapf'],
      \ 'markdown':['prettier'],
      \ 'tex': ['textlint'],
-     \ 'perl': ['perltidy']
+     \ 'perl': ['perltidy'],
+     \ 'c': ['clang-format']
      \ }
  let g:ale_linters = {
      \ 'markdown':['mdl'],
      \ 'python':['pylint','mypy'],
-     \ 'tex': ['proselint']
+     \ 'tex': ['proselint'],
+     \ 'c': ['clang']
      \ }
  let g:ale_fix_on_save = 1
+ let g:ale_c_clangformat_style_option = "{BasedOnStyle: llvm, IndentWidth: 4, AllowShortFunctionsOnASingleLine: None, KeepEmptyLinesAtTheStartOfBlocks: false, BreakBeforeBraces: Allman}"
 
 
  nnoremap <F2> :Defx<CR>
@@ -229,23 +231,26 @@ colorscheme gruvbox8_soft
  let b:csv_arrange_align = 'l*'
 
 
- let g:coc_global_extensions = ['coc-jedi', 'coc-snippets', 'coc-markdownlint', 'coc-highlight', 'coc-vimtex', 'coc-texlab']
+ let g:coc_global_extensions = ['coc-python', 'coc-snippets', 'coc-markdownlint', 'coc-highlight', 'coc-vimtex', 'coc-texlab', 'coc-clangd']
 
- inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+inoremap <expr><S-TAB> pumvisible() ? "\<C-k>" : "\<C-w>j"
+
+let g:coc_snippet_next = '<A-tab>'
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
 
 " Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
+"vmap <C-j> <Plug>(coc-snippets-select)
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -278,12 +283,15 @@ nmap <silent> <leader>jc <Plug>(IPy-RunCell)
 nmap <silent> <leader>ja <Plug>(IPy-RunAll)
 nmap <silent> <leader>jt <Plug>(IPy-Terminate)
 
-let g:goyo_height = "95%"
+let g:goyo_height = "75%"
 let g:goyo_linenr = 1
-let g:UltiSnipsExpandTrigger="<localleader><tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsSnippetDirectories=["Ultisnips", "my_snippets"]
 let g:float_preview#docked = 1
+
+let zotcite_filetypes=['markdown', 'md', 'pandoc']
 
 nmap dw de
 nmap cw ce

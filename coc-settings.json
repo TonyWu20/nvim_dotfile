@@ -1,4 +1,6 @@
 {
     "diagnostic.displayByAle": true,
-    "python.linting.enabled": false
+    "python.linting.enabled": false,
+    "clangd.path": "/Users/tonywu/.config/coc/extensions/coc-clangd-data/install/12.0.1/clangd_12.0.1/bin/clangd",
+    "snippets.userSnippetsDirectory": "/Users/tonywu/.config/nvim/my_snippets"
 }

@@ -39,7 +39,7 @@
  Plug 'vim-airline/vim-airline-themes'
  Plug 'jiangmiao/auto-pairs'
  Plug 'gabrielelana/vim-markdown'
- Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
  Plug 'luochen1990/rainbow'
  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
  Plug 'junegunn/fzf.vim'
@@ -53,4 +53,5 @@
  Plug 'sansyrox/vim-python-virtualenv'
  Plug 'pedrohdz/vim-yaml-folds'
  Plug 'jalvesaq/zotcite'
+ Plug 'mityu/vim-applescript'
  call plug#end()
