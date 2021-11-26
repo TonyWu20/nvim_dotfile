@@ -7,7 +7,8 @@ augroup MyColors
 	autocmd!
 	autocmd ColorScheme * call MyHighlights()
 augroup END
-colorscheme gruvbox8_soft
+colorscheme gruvbox8_hard
+ au Filetype c set softtabstop=4
  au Filetype yaml setlocal ts=2 sts=2 sw=2 expandtab
  au Filetype python set tabstop=4
  au Filetype python set softtabstop=4
@@ -30,8 +31,13 @@ colorscheme gruvbox8_soft
  au Filetype tex set formatoptions+=a
  au Filetype tex set nornu
  au Filetype tex set spell
+ au Filetype tex set foldmethod=indent
+ au Filetype tex set foldlevel=99
  au Filetype tex :NoMatchParen
  autocmd filetype python noremap <f12> :Clap tags<cr>
+ if isdirectory(expand("~/dactyl-keyboard/src"))
+     autocmd filetype python noremap <f11> :!python3 generate_configuration.py && python3 dactyl_manuform.py<cr>
+ endif
  autocmd filetype python inoremap <f10> <Esc> :ALEFix<cr>
  autocmd filetype tex noremap <buffer> <f10> :VimtexCompile<cr>
  autocmd filetype tex noremap <buffer> <f5> :ALEFix<cr>
@@ -39,6 +45,7 @@ colorscheme gruvbox8_soft
  autocmd filetype markdown noremap <buffer> <f10> <Esc> :MarkdownPreview <cr>
  autocmd filetype markdown inoremap <f10> <Esc>:MarkdownPreview <cr>
  autocmd filetype markdown inoremap <F5> <Esc> :ALEFix<cr>
+ au filetype clojure noremap <f10> :!lein generate<cr>
  let python_highlight_all = 1
 
  let g:rainbow_active = 1
@@ -75,7 +82,7 @@ colorscheme gruvbox8_soft
  nnoremap <F2> :Defx<CR>
  call defx#custom#option('_', {
        \ 'columns': 'indent:git:icons:filename',
-       \ 'winwidth': 50,
+       \ 'winwidth': 40,
        \ 'split': 'vertical',
        \ 'direction': 'topleft',
        \ 'show_ignored_files': 0,
@@ -87,7 +94,7 @@ colorscheme gruvbox8_soft
  function! s:defx_my_settings() abort
      nmap <silent><buffer><expr> t defx#do_action('open_or_close_tree')
      nnoremap <silent><buffer><expr> <CR>
- 	  \ defx#do_action('open')
+ 	  \ defx#do_action('multi', ['drop'])
      nnoremap <silent><buffer><expr> N
  	  \ defx#do_action('new_file')
      nnoremap <silent><buffer><expr> r
@@ -122,7 +129,7 @@ colorscheme gruvbox8_soft
  let g:vista#renderer#enable_icon = 1
  let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
  let g:vista_default_executive = 'coc'
- let g:vista_executive_for = {'tex': 'coc', 'python': 'coc'}
+ let g:vista_executive_for = {'c': 'ctags','tex': 'coc', 'python': 'coc'}
  let g:vista_fzf_preview=['right:80%']
  let g:fzf_layout = { 'window': 'call OpenFloatingWin()' }
  function! OpenFloatingWin()
@@ -231,7 +238,7 @@ colorscheme gruvbox8_soft
  let b:csv_arrange_align = 'l*'
 
 
- let g:coc_global_extensions = ['coc-python', 'coc-snippets', 'coc-markdownlint', 'coc-highlight', 'coc-vimtex', 'coc-texlab', 'coc-clangd']
+ let g:coc_global_extensions = ['coc-pyright', 'coc-snippets', 'coc-markdownlint', 'coc-highlight', 'coc-vimtex', 'coc-texlab', 'coc-ccls']
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
@@ -243,7 +250,8 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-inoremap <expr><S-TAB> pumvisible() ? "\<C-k>" : "\<C-w>j"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
 
 let g:coc_snippet_next = '<A-tab>'
 " Use <C-l> for trigger snippet expand.
@@ -292,6 +300,12 @@ let g:UltiSnipsSnippetDirectories=["Ultisnips", "my_snippets"]
 let g:float_preview#docked = 1
 
 let zotcite_filetypes=['markdown', 'md', 'pandoc']
-
+call wilder#setup({'modes': [':', '/', '?']})
+call wilder#set_option('renderer', wilder#popupmenu_renderer({
+      \ 'highlighter': wilder#basic_highlighter(),
+      \ 'left': [
+      \   wilder#popupmenu_devicons(),
+      \ ],
+      \ }))
 nmap dw de
 nmap cw ce
