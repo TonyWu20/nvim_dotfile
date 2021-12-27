@@ -33,11 +33,9 @@ set signcolumn=yes
 set noshowmode
 set foldmethod=syntax
 set backspace=indent,eol,start
+set tabstop=4
 " switch to working directory when entering a buffer
 autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif
-"let g:ale_disable_lsp = 1
+let g:ale_disable_lsp = 1
 let g:BASH_Ctrl_j = 'off'
-augroup cjmapping
-    autocmd VimEnter * unmap <C-j>
-    autocmd VimEnter * noremap <C-j> <C-w>j
-augroup end
+let g:c_syntax_for_h = 1

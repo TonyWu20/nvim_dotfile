@@ -14,3 +14,5 @@
  autocmd filetype markdown noremap <buffer> <f10> :MarkdownPreview <cr>
  noremap <buffer> <f3> :History: <cr>
  tnoremap <C-q> <c-\><c-n>
+ noremap <buffer> <f4> :FloatermNew --cmd=<root><cr>
+ noremap <buffer> <f5> :FloatermToggle<cr>

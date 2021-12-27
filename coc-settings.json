@@ -1,6 +1,32 @@
 {
-    "diagnostic.displayByAle": true,
-    "python.linting.enabled": false,
+    "diagnostic.displayByAle": false,
+    "diagnostic.checkCurrentLine": true,
+    "python.linting.enabled": true,
     "clangd.path": "/Users/tonywu/.config/coc/extensions/coc-clangd-data/install/12.0.1/clangd_12.0.1/bin/clangd",
-    "snippets.userSnippetsDirectory": "/Users/tonywu/.config/nvim/my_snippets"
+    "snippets.userSnippetsDirectory": "/Users/tonywu/.config/nvim/my_snippets",
+    "python.pythonPath": "/opt/homebrew/bin/python3",
+    "python.venvPath":"/opt/homebrew/Caskroom/miniconda/base/envs",
+    "python.linting.mypyEnabled": true,
+    "python.linting.pylintEnabled": true,
+    "clangd.semanticHighlighting": true,
+		"languageserver": {
+				"ccls": {
+						"command": "ccls",
+						"filetypes": ["c", "cpp", "objc", "objcpp"],
+						"rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+						"trace.server": "verbose",
+						"client":{
+								"snippetSupport": true
+						},
+						"initializationOptions": {
+								"cache": {
+										"directory": "/tmp/ccls"
+								},
+								"highlight": { "lsRanges" : true }
+						},
+						"clang":{
+								"extraArgs":["-std=c99"]
+						}
+				}				
+		}
 }

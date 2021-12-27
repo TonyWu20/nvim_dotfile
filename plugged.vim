@@ -3,11 +3,11 @@
  Plug 'morhetz/gruvbox'
  Plug 'lifepillar/vim-gruvbox8'
  Plug 'liuchengxu/vista.vim'
+ Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary'}
  Plug 'vim-scripts/indentpython.vim'
  Plug 'lervag/vimtex', {'for': 'tex'}
  Plug 'chaoren/vim-wordmotion'
  Plug 'junegunn/goyo.vim'
- Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
  Plug 'tpope/vim-fugitive'
  Plug 'mhinz/vim-signify'
  Plug 'tpope/vim-repeat'
@@ -54,4 +54,11 @@
  Plug 'pedrohdz/vim-yaml-folds'
  Plug 'jalvesaq/zotcite'
  Plug 'mityu/vim-applescript'
+ if has('nvim')
+   Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
+ else
+   Plug 'gelguy/wilder.nvim'
+ endif
+ Plug 'jackguo380/vim-lsp-cxx-highlight'
+ Plug 'voldikss/vim-floaterm'
  call plug#end()
