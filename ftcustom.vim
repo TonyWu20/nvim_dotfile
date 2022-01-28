@@ -55,6 +55,9 @@ colorscheme gruvbox8_hard
  let g:airline#extensions#tabline#enabled = 1
  let g:airline#extensions#clock#auto = 0
  let g:airline#extensions#ale#enabled = 1
+ let g:airline#extensions#tagbar#enabled = 1
+ let g:airline#extensions#wordcount#enabled = 1
+ let g:airline#extensions#wordcount#filetypes = '\vnotes|help|markdown|rst|org|text|asciidoc|tex|mail|conf'
  function! AirlineInit()
    let g:airline_section_a = airline#section#create(['clock', g:airline_symbols.space, g:airline_section_a])
  endfunction
