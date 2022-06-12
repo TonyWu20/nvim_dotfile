@@ -31,8 +31,10 @@ set cmdheight=2
 set updatetime=300
 set signcolumn=yes
 set noshowmode
-set foldmethod=indent
+set foldmethod=syntax
 set backspace=indent,eol,start
 " switch to working directory when entering a buffer
-autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif
-"let g:ale_disable_lsp = 1
+"autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif
+let g:ale_disable_lsp = 1
+let g:c_syntax_for_h = 1
+

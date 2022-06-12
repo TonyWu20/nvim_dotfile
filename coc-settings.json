@@ -1,4 +1,22 @@
 {
     "diagnostic.displayByAle": true,
-    "python.linting.enabled": false
+    "python.linting.enabled": false,
+"languageserver": {
+    "ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cpp", "objc", "objcpp"],
+      "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+      "trace.server":"verbose",
+      "client":{
+	      "snippetSupport":true
+      },
+      "initializationOptions": {
+         "cache": {
+           "directory": "/tmp/ccls"
+         },
+	 "highlight": {"lsRanges":true}
+       }
+    }
+  },
+  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/13.0.0/clangd_13.0.0/bin/clangd"
 }

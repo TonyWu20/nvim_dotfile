@@ -1,7 +1,7 @@
 function! MyHighlights() abort
     highlight SpellBad     cterm=undercurl ctermbg=76  ctermfg=16  gui=UnderCurl guifg=#fb9a99
     highlight SpellRare cterm=underline ctermbg=231 ctermfg=160 gui=underline guifg=#f89000
-    highlight texItalStyle  cterm=italic ctermfg=11 gui=italic guifg=#ffff00
+    hi texItalStyle cterm=italic ctermfg=11 gui=italic guifg=#ffff00
 endfunction
 augroup MyColors
 	autocmd!
@@ -38,6 +38,8 @@ colorscheme gruvbox8_soft
  autocmd filetype markdown noremap <buffer> <f10> <Esc> :MarkdownPreview <cr>
  autocmd filetype markdown inoremap <f10> <Esc>:MarkdownPreview <cr>
  autocmd filetype markdown inoremap <F5> <Esc> :ALEFix<cr>
+ autocmd Filetype C set foldmethod=indent
+ autocmd Filetype C set foldlevel=99
  let python_highlight_all = 1
 
  let g:rainbow_active = 1
@@ -57,7 +59,8 @@ colorscheme gruvbox8_soft
  let g:ale_fixers = {
      \ 'python':['yapf'],
      \ 'markdown':['prettier'],
-     \ 'tex': ['textlint']
+     \ 'tex': ['textlint'],
+     \ 'c' : ['clang-format']
      \ }
  let g:ale_linters = {
      \ 'markdown':['mdl'],
@@ -65,6 +68,7 @@ colorscheme gruvbox8_soft
      \ 'tex': ['proselint']
      \ }
  let g:ale_fix_on_save = 1
+ let g:ale_c_clangformat_style_option = "{BasedOnStyle: llvm, IndentWidth: 4, AllowShortFunctionsOnASingleLine : None, KeepEmptyLinesAtTheStartOfBlocks : false, BreakBeforeBraces: Allman}"
 
 
  nnoremap <F2> :Defx<CR>
@@ -226,7 +230,7 @@ colorscheme gruvbox8_soft
  let b:csv_arrange_align = 'l*'
 
 
- let g:coc_global_extensions = ['coc-python', 'coc-snippets', 'coc-markdownlint', 'coc-highlight', 'coc-vimtex', 'coc-texlab']
+ let g:coc_global_extensions = ['coc-python', 'coc-snippets', 'coc-clangd', 'coc-ccls','coc-markdownlint', 'coc-highlight', 'coc-vimtex', 'coc-texlab']
 
  inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
